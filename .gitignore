@@ -1,0 +1,7 @@
+results/*/*
+RawData
+logs
+references
+sifs
+venv
+.idea
