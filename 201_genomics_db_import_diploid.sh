@@ -17,7 +17,7 @@ while read -r bam; do
   V_ARGS+=("-V" "${GVCF}")
 done < "${SAMPLE_LIST}"
 
-OUTDIR="results/201_genomics_db_import"
+OUTDIR="results/201_genomics_db_import_diploid"
 WORKSPACE="${OUTDIR}/${CHR}_db"
 mkdir -p "${OUTDIR}" logs
 
