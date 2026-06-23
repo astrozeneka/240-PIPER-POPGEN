@@ -1,4 +1,6 @@
 import allel
+import numpy as np
+import matplotlib.pyplot as plt
 
 DEPTH_BIN_SIZE = 1
 if __name__ == '__main__':
@@ -15,11 +17,24 @@ if __name__ == '__main__':
     }
 
     for chunk, chunk_length, chrom, chunk_end_pos in it:
-        call_depth =  chunk["calldata/DP"]
-        for sample, depth in zip(samples, call_depth.items()):
-            bin_idx = depth//DEPTH_BIN_SIZE
-            while len(depth_bins[sample]) <= bin_idx:
-                depth_bins[sample].append(0)
-            depth_bins[sample][bin_idx] += 1
+        call_depth = chunk["calldata/DP"]
+        for sample_idx, sample in enumerate(samples):
+            for depth in call_depth[:, sample_idx]:
+                bin_idx = depth//DEPTH_BIN_SIZE
+                while len(depth_bins[sample]) <= bin_idx:
+                    depth_bins[sample].append(0)
+                depth_bins[sample][bin_idx] += 1
 
-    print()
+    # --- one curve per sample, all on the same histogram ---
+    fig, ax = plt.subplots(figsize=(10, 6))
+    for sample in samples:
+        counts = np.array(depth_bins[sample], dtype=float)
+        bin_centers = (np.arange(len(counts)) + 0.5) * DEPTH_BIN_SIZE
+        ax.plot(bin_centers, counts, label=sample)
+
+    ax.set_xlabel("Depth (DP)")
+    ax.set_ylabel("Number of calls")
+    ax.legend(fontsize="small", ncol=2)
+    ax.set_xlim(0, 400) # O to 400x
+    fig.tight_layout()
+    fig.savefig("results/1003_calldata_depth.png", dpi=300)
