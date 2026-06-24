@@ -1,7 +1,7 @@
 #!/bin/bash
 
-IN_PHY="results/207_ascbias_diploid/all_diploid.min4.ascbias.phy"
-OUTDIR="results/208_raxml_diploid"
+IN_PHY="results/208_ascbias_diploid/all_diploid.min4.ascbias.phy"
+OUTDIR="results/209_raxml_diploid"
 
 [[ ! -f "${IN_PHY}" ]] && { echo "ERROR: Input PHYLIP not found: ${IN_PHY}"; exit 1; }
 
@@ -11,8 +11,8 @@ THREADS=64
 SEED=12345
 BOOTSTRAPS=1000
 
-OUT_LOG="logs/208_raxml_$$.out"
-ERR_LOG="logs/208_raxml_$$.err"
+OUT_LOG="logs/209_raxml_$$.out"
+ERR_LOG="logs/209_raxml_$$.err"
 
 nohup singularity exec sifs/raxml_latest.sif \
   raxmlHPC-PTHREADS-SSE3 \

@@ -1,14 +1,14 @@
 #!/bin/bash
 
-IN_VCF="results/205_variant_filtration_diploid/all_diploid_filtered.vcf.gz"
-OUTDIR="results/206_vcf2phylip_diploid"
+IN_VCF="results/206_filtered_pass/all_diploid.passonly.vcf.gz"
+OUTDIR="results/207_vcf2phylip_diploid"
 
 [[ ! -f "${IN_VCF}" ]] && { echo "ERROR: Input VCF not found: ${IN_VCF}"; exit 1; }
 
 mkdir -p "${OUTDIR}" logs
 
-OUT_LOG="logs/206_vcf2phylip_$$.out"
-ERR_LOG="logs/206_vcf2phylip_$$.err"
+OUT_LOG="logs/207_vcf2phylip_$$.out"
+ERR_LOG="logs/207_vcf2phylip_$$.err"
 
 nohup python3 vcf2phylip.py \
   -i "${IN_VCF}" \

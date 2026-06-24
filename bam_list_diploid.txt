@@ -1,0 +1,13 @@
+results/009_mark_duplicates/509_Pini.markdup.bam
+results/009_mark_duplicates/844_Pini.markdup.bam
+results/009_mark_duplicates/854_Pini.markdup.bam
+results/009_mark_duplicates/858_Pini.markdup.bam
+results/009_mark_duplicates/860_Pini.markdup.bam
+results/009_mark_duplicates/869_Pini.markdup.bam
+results/009_mark_duplicates/876_Pini.markdup.bam
+results/009_mark_duplicates/Kitti_Pini.markdup.bam
+results/009_mark_duplicates/Visilp_Pini.markdup.bam
+../307-EXPLORE-NCBI-PIPER/results/011_mark_duplicates/SRR8820205.markdup.bam
+../307-EXPLORE-NCBI-PIPER/results/011_mark_duplicates/SRR8820207.markdup.bam
+../307-EXPLORE-NCBI-PIPER/results/011_mark_duplicates/SRR6075293.markdup.bam
+../307-EXPLORE-NCBI-PIPER/results/011_mark_duplicates/SRR6075294.markdup.bam
