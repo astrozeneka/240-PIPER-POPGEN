@@ -1,4 +1,9 @@
 .idea/
 844_Pini.markdup.bam
-references/
-results/
+results
+results/*/*
+RawData
+logs
+references
+sifs
+venv

@@ -1,0 +1,32 @@
+FROM rocker/r-ver:4.5
+
+# System dependencies for Seurat and HDF5
+RUN apt-get update && apt-get install -y \
+    libhdf5-dev \
+    libcurl4-openssl-dev \
+    libssl-dev \
+    libxml2-dev \
+    libgit2-dev \
+    libpng-dev \
+    libfftw3-dev \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install R packages
+RUN Rscript -e "\
+    install.packages(c('ggplot2', 'dplyr'), repos='https://cloud.r-project.org'); \
+    install.packages('BiocManager', repos='https://cloud.r-project.org'); \
+    BiocManager::install(version='3.22');" \
+
+RUN echo "Hello"
+
+# Install other R packages
+RUN Rscript -e "\
+    install.packages(c('vcfR', 'poppr', 'adegenet'), repos='https://cloud.r-project.org');"
+
+# Rscript -e "\
+#    install.packages('phangorn', repos='https://cloud.r-project.org');"
+
+WORKDIR /app
+
+CMD ["R"]
