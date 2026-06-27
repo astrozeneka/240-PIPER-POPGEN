@@ -7,7 +7,7 @@ if __name__ == '__main__':
 
     fields, samples, headers, it = allel.iter_vcf_chunks(
         "results/206_filtered_pass/all_diploid.passonly.vcf.gz",
-        fields=["variants/POS", "calldata/GT", "variants/DP", "calldata/DP", "variants/QUAL"],
+        fields=["variants/POS", "calldata/GT", "variants/DP", "calldata/DP", "variants/QUAL", "calldata/QUAL"],
         chunk_length=65536,  # tune this; default is fine for most cases
     )
 
