@@ -1,11 +1,16 @@
+import argparse
 import allel
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 from joblib import Memory
 
+parser = argparse.ArgumentParser()
+parser.add_argument("vcf", help="path to .vcf.gz file")
+args = parser.parse_args()
+
 CHROM_BINS = 2**16
-VCF_PATH = "results/206_filtered_pass/all_diploid.passonly.vcf.gz"
+VCF_PATH = args.vcf
 FAI_PATH = "references/Piper_nigrum.genome.fa.fai"
 
 memory = Memory(location="results/.cache_1002", verbose=0)
@@ -119,4 +124,5 @@ if __name__ == '__main__':
     cbar.set_label("SNP density (loci/kb)")
 
     fig.tight_layout()
-    fig.savefig("results/1002_snp_density_heatmap.png", dpi=300)
+    out_png = VCF_PATH.removesuffix(".vcf.gz") + ".png"
+    fig.savefig(out_png, dpi=300)
